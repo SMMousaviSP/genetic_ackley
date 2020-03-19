@@ -49,3 +49,19 @@ class Chromosome():
             ((self.maximum - self.minimum) / ((2 ** len(gen_list)) - 1))
             + self.minimum
         )
+
+    def get_x(self):
+        """ Get value of x in phenotype space.
+
+        :return: Value of x
+        :rtype: float
+        """
+        return self.__calculate_phenotype_value(self[:int(self.size/2)])
+
+    def get_y(self):
+        """ Get value of y in phenotype space.
+
+        :return: Value of y
+        :rtype: float
+        """
+        return self.__calculate_phenotype_value(self[int(self.size/2):])
