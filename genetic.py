@@ -33,7 +33,7 @@ class Chromosome():
         return ''.join(['1' if x else '0' for x in self.genotype])
 
     def __getitem__(self, key):
-        return '1' if self.genotype[key] else '0'
+        return 1 if self.genotype[key] else 0
 
     def __setitem__(self, key, value):
         self.genotype[key] = bool(int(value))
