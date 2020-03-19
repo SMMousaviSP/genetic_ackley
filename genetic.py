@@ -33,6 +33,11 @@ class Chromosome():
         return ''.join(['1' if x else '0' for x in self.genotype])
 
     def __getitem__(self, key):
+        if isinstance(key, slice):
+            sliced_list = []
+            for i in range(key.start, key.stop):
+                sliced_list.append(1 if self.genotype[i] else 0)
+            return sliced_list
         return 1 if self.genotype[key] else 0
 
     def __setitem__(self, key, value):
