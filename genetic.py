@@ -39,3 +39,13 @@ class Chromosome():
 
     def __setitem__(self, key, value):
         self.genotype[key] = bool(int(value))
+
+    def __calculate_phenotype_value(self, gen_list):
+        raw_value = 0
+        for i, gen in enumerate(gen_list):
+            raw_value += gen * (2 ** i)
+        return (
+            raw_value *
+            ((self.maximum - self.minimum) / ((2 ** len(gen_list)) - 1))
+            + self.minimum
+        )
