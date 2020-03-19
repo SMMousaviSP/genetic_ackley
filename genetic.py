@@ -14,9 +14,16 @@ class Chromosome():
     """ Representation of a chromosome in both phenotype and genotype.
 
     """
-    def __init__(self, size):
+    def __init__(self, size, minimum=-5, maximum=5):
+        if size % 2 == 1:
+            print("size can't be odd, increasing by 1 automatically")
+            size += 1
+        self.size = size
+        self.minimum = minimum
+        self.maximum = maximum
+
         self.genotype = []
-        for _ in range(size):
+        for _ in range(self.size):
             self.genotype.append(bool(random.getrandbits(1)))
 
     def __str__(self):
