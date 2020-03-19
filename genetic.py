@@ -11,7 +11,7 @@ import random
 
 
 class Chromosome():
-    """ Representation of a chromosom in both phenotype and genotype
+    """ Representation of a chromosome in both phenotype and genotype
 
     """
     def __init__(self, size):
