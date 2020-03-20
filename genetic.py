@@ -95,6 +95,32 @@ class Chromosome():
         split_point_list.append(self.size)
         return split_point_list
 
+    def __crossover(self, second_parent, split_point_list):
+        """ Crossover with two parent chromosome and produce two children.
+
+        :param second_parent: Second parent
+        :type second_parent: Chromosome
+        :param split_point_list: A list with random split points
+        :type split_point_list: list
+        :return: A tuple containing two children
+        :rtype: tuple
+        """
+        first_parent = self
+        first_child = []
+        second_child = []
+        for i, (start, end) in enumerate(
+                zip(split_point_list[:-1], split_point_list[1:])
+        ):
+            if i % 2 == 0:
+                first_child[start:end] = first_parent[start:end]
+                second_child[start:end] = second_parent[start:end]
+            else:
+                first_child[start:end] = second_parent[start:end]
+                second_child[start:end] = first_parent[start:end]
+        return (
+            self.from_gen_list(first_child), self.from_gen_list(second_child)
+        )
+
     def get_x(self):
         """ Get value of x in phenotype space.
 
