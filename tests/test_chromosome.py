@@ -62,3 +62,13 @@ def test_single_point_crossover():
             flag = False
             count += 1
     assert count == 4
+
+
+def test_n_point_crossover():
+    c = get_from_gen_list_chromosome([1 for _ in range(50)])
+    d = get_from_gen_list_chromosome([0 for _ in range(50)])
+    first_child, second_child = c.single_point_crossover(d)
+
+    sum_children = [x + y for x, y in zip(first_child, second_child)]
+    for i in sum_children:
+        assert i == 1
