@@ -16,6 +16,7 @@ def test_random_chromosom_size():
     c = get_random_chromosome(10)
     assert len(str(c)) == 10
     assert c.size == 10
+    assert c.fitness >= 1
 
 
 def test_from_gen_list_chromosome():
@@ -26,6 +27,7 @@ def test_from_gen_list_chromosome():
     c[0] = 1
     assert c[0] == 1
     assert c[0:2] == [1, 0]
+    assert c.fitness >= 1
 
 
 def test_phenotype_get_x_and_y():
