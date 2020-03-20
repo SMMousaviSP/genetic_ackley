@@ -110,6 +110,18 @@ class Chromosome():
         )
         return -20 * math.exp(power1) - math.exp(power2) + math.e + 20
 
+    def calculate_fitness(self, base=21):
+        """ Calculate fitness by subtracting Ackley function value from 21,
+        since maximum value of ackley function is 20, our worst chromosome
+        fitness is 1 and every other chromosome is higher than 1.
+
+        :param base: Base of our fitness calculation, defaults to 21
+        :type base: int, optional
+        :return: Fitness of the chromosome
+        :rtype: float
+        """
+        return base - self.calculate_ackley_function()
+
     def general_crossover(self, second_parent, split_point_list):
         """ Crossover with two parent chromosome and produce two children.
 
