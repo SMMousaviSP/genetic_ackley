@@ -41,6 +41,22 @@ class Chromosome():
             genotype.append(bool(random.getrandbits(1)))
         return cls(genotype, minimum, maximum)
 
+    @classmethod
+    def from_gen_list(cls, gen_list, minimum=-5, maximum=5):
+        """ Create a chromosome based on a gen_list.
+
+        :param gen_list: A list which the chromosome should be created from
+        :type gen_list: list
+        :param minimum: Minimum value in phenotype, defaults to -5
+        :type minimum: int, optional
+        :param maximum: Maximum value in phenotype, defaults to 5
+        :type maximum: int, optional
+        :return: An instance of chromosome class
+        :rtype: Chromosome
+        """
+        genotype = [bool(int(x)) for x in gen_list]
+        return cls(genotype, minimum, maximum)
+
     def __str__(self):
         return ''.join(['1' if x else '0' for x in self.genotype])
 
