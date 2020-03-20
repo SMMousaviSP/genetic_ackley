@@ -122,6 +122,13 @@ class Chromosome():
         )
 
     def single_point_crossover(self, second_parent):
+        """ Single point crossover.
+
+        :param second_parent: Second parent
+        :type second_parent: Chromosome
+        :return: A tuple containing two children
+        :rtype: tuple
+        """
         split_point_list = self.__get_random_split_point_list(1)
         return self.general_crossover(second_parent, split_point_list)
 
