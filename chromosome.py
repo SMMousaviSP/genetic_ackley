@@ -20,6 +20,7 @@ class Chromosome():
         self.minimum = minimum
         self.maximum = maximum
         self.genotype = genotype
+        self.fitness = self.calculate_fitness()
 
     @classmethod
     def random(cls, size, minimum=-5, maximum=5):
