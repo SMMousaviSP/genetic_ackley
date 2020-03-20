@@ -46,3 +46,19 @@ def test_general_crossover():
     first_child, second_child = c.general_crossover(d, [0, 1, 2, 3, 4])
     assert str(first_child) == "1010"
     assert str(second_child) == "0101"
+
+
+def test_single_point_crossover():
+    c = get_from_gen_list_chromosome([1, 1, 1, 1])
+    d = get_from_gen_list_chromosome([0, 0, 0, 0])
+    first_child, second_child = c.single_point_crossover(d)
+
+    flag = True
+    count = 0
+    for i, j in zip(first_child, second_child):
+        if i == 1 and j == 0 and flag:
+            count += 1
+        elif i == 0 and j == 1:
+            flag = False
+            count += 1
+    assert count == 4
