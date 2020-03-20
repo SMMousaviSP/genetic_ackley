@@ -14,17 +14,32 @@ class Chromosome():
     """ Representation of a chromosome in both phenotype and genotype.
 
     """
-    def __init__(self, size, minimum=-5, maximum=5):
+    def __init__(self, genotype, minimum=-5, maximum=5):
+        self.size = len(genotype)
+        self.minimum = minimum
+        self.maximum = maximum
+        self.genotype = genotype
+
+    @classmethod
+    def random(cls, size, minimum=-5, maximum=5):
+        """ Create a random chromosome instance.
+
+        :param size: Size of chromosome
+        :type size: int
+        :param minimum: Minimum value in phenotype, defaults to -5
+        :type minimum: int, optional
+        :param maximum: Maximum value in phenotype, defaults to 5
+        :type maximum: int, optional
+        :return: An instance of chromosome class
+        :rtype: Chromosome
+        """
         if size % 2 == 1:
             print("size can't be odd, increasing by 1 automatically")
             size += 1
-        self.size = size
-        self.minimum = minimum
-        self.maximum = maximum
-
-        self.genotype = []
-        for _ in range(self.size):
-            self.genotype.append(bool(random.getrandbits(1)))
+        genotype = []
+        for _ in range(size):
+            genotype.append(bool(random.getrandbits(1)))
+        return cls(genotype, minimum, maximum)
 
     def __str__(self):
         return ''.join(['1' if x else '0' for x in self.genotype])
