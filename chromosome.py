@@ -95,7 +95,7 @@ class Chromosome():
         split_point_list.append(self.size)
         return split_point_list
 
-    def __crossover(self, second_parent, split_point_list):
+    def general_crossover(self, second_parent, split_point_list):
         """ Crossover with two parent chromosome and produce two children.
 
         :param second_parent: Second parent
