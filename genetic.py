@@ -50,6 +50,20 @@ class Chromosome():
             + self.minimum
         )
 
+    def __get_random_split_point_list(self, count):
+        """ Generate random unique split points.
+
+        :param count: Number of split points needed.
+        :type count: int
+        :return: Sorted list of random split points
+        :rtype: list
+        """
+        split_point_list = random.sample(range(1, self.size), count)
+        split_point_list.sort()
+        split_point_list.insert(0, 0)
+        split_point_list.append(self.size)
+        return split_point_list
+
     def get_x(self):
         """ Get value of x in phenotype space.
 
