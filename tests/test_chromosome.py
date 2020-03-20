@@ -82,3 +82,10 @@ def test_universal_crossover():
     sum_children = [x + y for x, y in zip(first_child, second_child)]
     for i in sum_children:
         assert i == 1
+
+
+def test_calculate_ackley_function():
+    c = get_random_chromosome(10)
+    c.get_x = lambda: 0
+    c.get_y = lambda: 0
+    assert c.calculate_ackley_function() == 0
