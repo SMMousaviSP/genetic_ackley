@@ -132,6 +132,19 @@ class Chromosome():
         split_point_list = self.__get_random_split_point_list(1)
         return self.general_crossover(second_parent, split_point_list)
 
+    def n_point_crossover(self, second_parent, count):
+        """ N-Point crossover.
+
+        :param second_parent: Second parent
+        :type second_parent: Chromosome
+        :param count: Number of split points
+        :type count: int
+        :return: A tuple containing two children
+        :rtype: tuple
+        """
+        split_point_list = self.__get_random_split_point_list(count)
+        return self.general_crossover(second_parent, split_point_list)
+
     def get_x(self):
         """ Get value of x in phenotype space.
 
