@@ -8,6 +8,7 @@ directory of this project.
 """
 
 import random
+import math
 
 
 class Chromosome():
@@ -94,6 +95,20 @@ class Chromosome():
         split_point_list.insert(0, 0)
         split_point_list.append(self.size)
         return split_point_list
+
+    def calculate_ackley_function(self):
+        """ Calculate ackley function with x and y extracted from chromosome.
+
+        :return: Ackley function output
+        :rtype: float
+        """
+        ackley_x = self.get_x()
+        ackley_y = self.get_y()
+        power1 = -0.2 * math.sqrt(0.5 * ((ackley_x ** 2) + (ackley_y ** 2)))
+        power2 = +0.5 * (
+            math.cos(2 * math.pi * ackley_x) + math.cos(2 * math.pi * ackley_y)
+        )
+        return -20 * math.exp(power1) - math.exp(power2) + math.e + 20
 
     def general_crossover(self, second_parent, split_point_list):
         """ Crossover with two parent chromosome and produce two children.
