@@ -89,3 +89,10 @@ def test_calculate_ackley_function():
     c.get_x = lambda: 0
     c.get_y = lambda: 0
     assert c.calculate_ackley_function() == 0
+
+
+def test_calculate_fitness():
+    c = get_random_chromosome(10)
+    c.get_x = lambda: 0
+    c.get_y = lambda: 0
+    assert c.calculate_fitness() == 21
