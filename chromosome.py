@@ -121,6 +121,10 @@ class Chromosome():
             self.from_gen_list(first_child), self.from_gen_list(second_child)
         )
 
+    def single_point_crossover(self, second_parent):
+        split_point_list = self.__get_random_split_point_list(1)
+        return self.general_crossover(second_parent, split_point_list)
+
     def get_x(self):
         """ Get value of x in phenotype space.
 
