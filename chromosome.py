@@ -145,6 +145,28 @@ class Chromosome():
         split_point_list = self.__get_random_split_point_list(count)
         return self.general_crossover(second_parent, split_point_list)
 
+    def uniform_crossover(self, second_parent):
+        """ Uniform crossover, each bit is chosen from either parent.
+
+        :param second_parent: Second parent
+        :type second_parent: Chromosome
+        :return: A tuple containing two children
+        :rtype: tuple
+        """
+        first_parent = self
+        first_child = []
+        second_child = []
+        for i, j in zip(first_parent, second_parent):
+            if bool(random.getrandbits(1)):
+                first_child.append(i)
+                second_child.append(j)
+            else:
+                first_child.append(j)
+                second_child.append(i)
+        return (
+            self.from_gen_list(first_child), self.from_gen_list(second_child)
+        )
+
     def get_x(self):
         """ Get value of x in phenotype space.
 
