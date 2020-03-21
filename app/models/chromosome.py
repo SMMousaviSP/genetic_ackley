@@ -1,10 +1,7 @@
 """
-Genetic algorithm for Ackley function.
-
-Author S.Mohammad Mousavi <smmousavisp@gmail.com>
-
-Copyright under MIT License, you can find the license file in the main
-directory of this project.
+Binary chromosome representation with dynamic size and all 3 model of crossover
+single-point, n-point and uniform. Each chromosome could be initialized by
+calling random or form_gen_list classmethod.
 """
 
 import random
