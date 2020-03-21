@@ -1,4 +1,4 @@
-from genetic_ackley import chromosome
+from genetic_ackley.app.models import chromosome
 
 
 def get_random_chromosome(size):
