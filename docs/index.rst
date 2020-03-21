@@ -9,7 +9,8 @@ Welcome to Ackley Genetic Algorithm's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+.. automodule:: app.models.chromosome
+   :members:
 
 
 Indices and tables
