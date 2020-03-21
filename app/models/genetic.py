@@ -2,6 +2,8 @@
 Genetic algorithm implementation for Ackley function.
 """
 
+from genetic_ackley.app.models.chromosome import Chromosome
+
 
 class Genetic:
     """ Genetic algorithm for Ackley function.
@@ -41,3 +43,9 @@ class Genetic:
         self.crossover_method = crossover_method
         self.parent_selection_method = parent_selection_method
         self.survival_selection_method = survival_selection_method
+
+    def initialize_population(self):
+        self.current_generation = [
+            Chromosome.random(self.chromosome_size)
+            for _ in range(self.population_size)
+        ]
