@@ -2,7 +2,7 @@
 Genetic algorithm implementation for Ackley function.
 """
 
-from genetic_ackley.app.models.chromosome import Chromosome
+from models.chromosome import Chromosome
 
 
 class Genetic:

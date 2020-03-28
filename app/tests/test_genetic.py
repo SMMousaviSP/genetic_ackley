@@ -1,5 +1,5 @@
-from genetic_ackley.app.models.genetic import Genetic
-from genetic_ackley.app.models.chromosome import Chromosome
+from models.genetic import Genetic
+from models.chromosome import Chromosome
 
 
 def test_initialize_population():
