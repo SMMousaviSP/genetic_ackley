@@ -53,3 +53,14 @@ class Genetic:
         :param survival_selection_method: TODO, defaults to "rws"
         :type survival_selection_method: str, optional
         """
+
+    def fitness_sum(self):
+        """ Add up all the chromosomes fitness in current generation.
+
+        :return: Sum of all chromosomes fitness in current generation
+        :rtype: float
+        """
+        summation = 0
+        for chromosome in self.current_generation:
+            summation += chromosome.fitness
+        return summation
