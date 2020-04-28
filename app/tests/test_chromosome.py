@@ -104,7 +104,9 @@ def test_crossover():
 
     c = get_from_gen_list_chromosome([1 for _ in range(50)])
     d = get_from_gen_list_chromosome([0 for _ in range(50)])
-    first_child, second_child = c.crossover(d, str(random.randrange(2, 50)) + "_point")
+    first_child, second_child = c.crossover(
+        d, str(random.randrange(2, 50)) + "_point"
+    )
     sum_children = [x + y for x, y in zip(first_child, second_child)]
     for i in sum_children:
         assert i == 1
