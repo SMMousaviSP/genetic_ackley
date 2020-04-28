@@ -71,7 +71,7 @@ def test_single_point_crossover():
 def test_n_point_crossover():
     c = get_from_gen_list_chromosome([1 for _ in range(50)])
     d = get_from_gen_list_chromosome([0 for _ in range(50)])
-    first_child, second_child = c.n_point_crossover(d, random.randrange(2,50))
+    first_child, second_child = c.n_point_crossover(d, random.randrange(2, 50))
 
     sum_children = [x + y for x, y in zip(first_child, second_child)]
     for i in sum_children:
@@ -83,6 +83,35 @@ def test_universal_crossover():
     d = get_from_gen_list_chromosome([0 for _ in range(50)])
     first_child, second_child = c.uniform_crossover(d)
 
+    sum_children = [x + y for x, y in zip(first_child, second_child)]
+    for i in sum_children:
+        assert i == 1
+
+
+def test_crossover():
+    c = get_from_gen_list_chromosome([1, 1, 1, 1])
+    d = get_from_gen_list_chromosome([0, 0, 0, 0])
+    first_child, second_child = c.crossover(d, "single_point")
+    flag = True
+    count = 0
+    for i, j in zip(first_child, second_child):
+        if i == 1 and j == 0 and flag:
+            count += 1
+        elif i == 0 and j == 1:
+            flag = False
+            count += 1
+    assert count == 4
+
+    c = get_from_gen_list_chromosome([1 for _ in range(50)])
+    d = get_from_gen_list_chromosome([0 for _ in range(50)])
+    first_child, second_child = c.crossover(d, str(random.randrange(2,50)) + "_point")
+    sum_children = [x + y for x, y in zip(first_child, second_child)]
+    for i in sum_children:
+        assert i == 1
+
+    c = get_from_gen_list_chromosome([1 for _ in range(50)])
+    d = get_from_gen_list_chromosome([0 for _ in range(50)])
+    first_child, second_child = c.crossover(d, "uniform")
     sum_children = [x + y for x, y in zip(first_child, second_child)]
     for i in sum_children:
         assert i == 1

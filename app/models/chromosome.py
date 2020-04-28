@@ -192,6 +192,24 @@ class Chromosome():
             self.from_gen_list(first_child), self.from_gen_list(second_child)
         )
 
+    def crossover(self, second_parent, method):
+        """ Crossover with chosen method (n_point, single_point, uniform).
+
+        :param second_parent: Second parent
+        :type second_parent: Chromosome
+        :param method: Method for crossover
+        :type method: str
+        """
+        if method == "uniform":
+            return self.uniform_crossover(second_parent)
+        if method.split('_')[0] == "single":
+            return self.single_point_crossover(second_parent)
+        if method.split('_')[0].isnumeric():
+            return self.n_point_crossover(
+                second_parent, int(method.split('_')[0])
+            )
+        return False
+
     def get_x(self):
         """ Get value of x in phenotype space.
 
