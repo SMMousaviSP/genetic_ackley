@@ -1,3 +1,5 @@
+import random
+
 from models import chromosome
 
 
@@ -69,7 +71,7 @@ def test_single_point_crossover():
 def test_n_point_crossover():
     c = get_from_gen_list_chromosome([1 for _ in range(50)])
     d = get_from_gen_list_chromosome([0 for _ in range(50)])
-    first_child, second_child = c.single_point_crossover(d)
+    first_child, second_child = c.n_point_crossover(d, random.randrange(2,50))
 
     sum_children = [x + y for x, y in zip(first_child, second_child)]
     for i in sum_children:
