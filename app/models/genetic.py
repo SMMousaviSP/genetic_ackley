@@ -72,6 +72,25 @@ class Genetic:
         )
 
     @staticmethod
+    def survival_selection(chromosome_list, survival_selection_method):
+        """ Survival selection based on selection method.
+
+        :param chromosome_list: Chromosome list to select from
+        :type chromosome_list: list
+        :param survival_selection_method: Survival selection method (rws, sus,
+        ts, rb)
+        :type survival_selection_method: str
+        :return: List of chromosomes, to be the survivals of the next
+        generation
+        :rtype: list
+        """
+        return Genetic.selection(
+            chromosome_list,
+            2,
+            survival_selection_method
+        )
+
+    @staticmethod
     def selection(chromosome_list, size, selection_method):
         """ Select chromosomes based on selection method.
 

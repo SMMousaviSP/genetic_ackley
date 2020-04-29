@@ -24,6 +24,16 @@ def test_parent_selection():
         assert isinstance(chromosome, Chromosome)
 
 
+def test_survival_selection():
+    chromosome_list = [Chromosome.random(10) for _ in range(5)]
+    selected_chromosome_list = Genetic.survival_selection(
+        chromosome_list, "rws"
+    )
+    assert len(selected_chromosome_list) == 2
+    assert isinstance(selected_chromosome_list[0], Chromosome)
+    assert isinstance(selected_chromosome_list[1], Chromosome)
+
+
 def test_selection():
     chromosome_list = [Chromosome.random(10) for _ in range(10)]
     selected_chromosome_list = Genetic.selection(chromosome_list, 10, "rws")
