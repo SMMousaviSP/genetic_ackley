@@ -2,6 +2,8 @@
 Genetic algorithm implementation for Ackley function.
 """
 
+import random
+
 from models.chromosome import Chromosome
 
 
@@ -65,3 +67,20 @@ class Genetic:
         for chromosome in chromosome_list:
             summation += chromosome.fitness
         return summation
+
+    @staticmethod
+    def roulette_wheal_selection(chromosome_list):
+        """ Select a chromosome based on roulette wheal selection (rws)
+
+        :param chromosome_list: List of chromosome
+        :type chromosome_list: list
+        :return: Selected chromosome based on roulette wheal selection
+        :rtype: Chromosome
+        """
+        fitness_sum = Genetic.fitness_sum(chromosome_list)
+        random_float = random.uniform(0, fitness_sum)
+        for chromosome in chromosome_list:
+            random_float -= chromosome.fitness
+            if random_float <= 0:
+                return chromosome
+        return chromosome_list[-1]
