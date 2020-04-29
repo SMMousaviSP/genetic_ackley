@@ -57,6 +57,27 @@ class Genetic:
         """
 
     @staticmethod
+    def selection(chromosome_list, size, selection_method):
+        """ Select chromosomes based on selection method.
+
+        :param chromosome_list: Chromosome list to select from
+        :type chromosome_list: list
+        :param size: Size of chromosomes that should be selected
+        :type size: int
+        :param selection_method: Selection method (rws, sus, ts, rb)
+        :type selection_method: str
+        :return: List of selected chromosomes
+        :rtype: list
+        """
+        if selection_method == "rws":
+            return [
+                Genetic.roulette_wheal_selection(chromosome_list)
+                for _ in range(size)
+            ]
+        # TODO: Add sus, ts and rb selection
+        return False
+
+    @staticmethod
     def fitness_sum(chromosome_list):
         """ Add up all the chromosomes fitness in current generation.
 

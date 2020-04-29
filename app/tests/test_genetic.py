@@ -14,3 +14,11 @@ def test_roulette_wheal_selection():
     for _ in range(20):
         chromosome = Genetic.roulette_wheal_selection(chromosome_list)
         assert isinstance(chromosome, Chromosome)
+
+
+def test_selection():
+    chromosome_list = [Chromosome.random(10) for _ in range(10)]
+    selected_chromosome_list = Genetic.selection(chromosome_list, 10, "rws")
+    assert len(selected_chromosome_list) == 10
+    for chromosome in chromosome_list:
+        assert isinstance(chromosome, Chromosome)
