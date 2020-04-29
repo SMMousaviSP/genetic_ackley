@@ -52,10 +52,14 @@ class Genetic:
         defaults to "3_point"
         :type crossover_method: str, optional
         :param parent_selection_method: Parent selection method, could be "rws"
-        (Roulette Wheal Selection), "sus" (Stochastic Universal Sampling), "ts"
-        (Tournament Selection) or "rb" (Rank-based Selection), defaults to "ts"
+        (Roulette Wheal Selection), "sus" (Stochastic Universal Sampling),
+        "ts_n" (Tournament Selection with size n) or "rb" (Rank-based Selection
+        ), defaults to "rws"
         :type parent_selection_method: str, optional
-        :param survival_selection_method: TODO, defaults to "rws"
+        :param survival_selection_method: Survival selection method, could be
+        "rws" (Roulette Wheal Selection), "sus" (Stochastic Universal Sampling)
+        , "ts_n" (Tournament Selection with size n) or "rb" (Rank-based
+        Selection), defaults to "rws"
         :type survival_selection_method: str, optional
         """
         for _ in range(self.generation_count):
