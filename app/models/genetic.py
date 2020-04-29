@@ -58,6 +58,35 @@ class Genetic:
         :param survival_selection_method: TODO, defaults to "rws"
         :type survival_selection_method: str, optional
         """
+        for _ in range(self.generation_count):
+            self.generation_max_fitness.append(
+                max(self.current_generation, key=lambda c: c.fitness).fitness
+            )
+            self.generation_average_fitness.append(
+                Genetic.fitness_sum(self.current_generation)
+                / self.population_size
+            )
+            selected_parent_list = self.parent_selection(
+                parent_selection_method
+            )
+            offspring_list = []
+            for i in range(0, len(selected_parent_list), 2):
+                offspring_list.extend(
+                    selected_parent_list[i].crossover(
+                        selected_parent_list[i+1],
+                        crossover_method
+                    )
+                )
+                self.next_generation.extend(
+                    self.survival_selection(
+                        offspring_list + [
+                            selected_parent_list[i],
+                            selected_parent_list[i+1]
+                        ],
+                        survival_selection_method
+                    )
+                )
+            self.go_to_the_future()
 
     def parent_selection(self, parent_selection_method):
         """ Parent selection based on selection method.
