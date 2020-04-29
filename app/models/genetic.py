@@ -149,7 +149,12 @@ class Genetic:
                 Genetic.roulette_wheal_selection(chromosome_list)
                 for _ in range(size)
             ]
-        # TODO: Add sus, ts and rb selection
+        if selection_method == "rb":
+            return [
+                Genetic.rank_based_selection(chromosome_list)
+                for _ in range(size)
+            ]
+        # TODO: Add sus and ts
         return False
 
     @staticmethod
@@ -163,6 +168,24 @@ class Genetic:
         for chromosome in chromosome_list:
             summation += chromosome.fitness
         return summation
+
+    @staticmethod
+    def rank_based_selection(chromosome_list):
+        """ Select a chromosome based on rank selection (rb)
+
+        :param chromosome_list: List of chromosome
+        :type chromosome_list: list
+        :return: Selected chromosome based on rank selection
+        :rtype: Chromosome
+        """
+        chromosome_list.sort(key=lambda c: c.fitness)
+        fitness_sum = ((1 + len(chromosome_list)) * len(chromosome_list)) / 2
+        random_float = random.uniform(0, fitness_sum)
+        for i, chromosome in enumerate(chromosome_list):
+            random_float -= i + 1
+            if random_float <= 0:
+                return chromosome
+        return chromosome_list[-1]
 
     @staticmethod
     def roulette_wheal_selection(chromosome_list):
