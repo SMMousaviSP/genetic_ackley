@@ -56,6 +56,21 @@ class Genetic:
         :type survival_selection_method: str, optional
         """
 
+    def parent_selection(self, parent_selection_method):
+        """ Parent selection based on selection method.
+
+        :param parent_selection_method: Parent selection method (rws, sus, ts,
+        rb)
+        :type parent_selection_method: str
+        :return: List of chromosomes, to be the parents of the next generation
+        :rtype: list
+        """
+        return Genetic.selection(
+            self.current_generation,
+            self.population_size,
+            parent_selection_method
+        )
+
     @staticmethod
     def selection(chromosome_list, size, selection_method):
         """ Select chromosomes based on selection method.
