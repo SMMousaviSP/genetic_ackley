@@ -154,7 +154,15 @@ class Genetic:
                 Genetic.rank_based_selection(chromosome_list)
                 for _ in range(size)
             ]
-        # TODO: Add sus and ts
+        if selection_method[0:2] == "ts":
+            return [
+                Genetic.tournament_selection(
+                    chromosome_list,
+                    int(selection_method.split('_')[1])
+                )
+                for _ in range(size)
+            ]
+        # TODO: Add sus
         return False
 
     @staticmethod
@@ -203,3 +211,17 @@ class Genetic:
             if random_float <= 0:
                 return chromosome
         return chromosome_list[-1]
+
+    @staticmethod
+    def tournament_selection(chromosome_list, size):
+        """ Select a chromosome based on tournament selection (ts_n)
+
+        :param chromosome_list: List of chromosome
+        :type chromosome_list: list
+        :param size: Size of tournament
+        :type size: int
+        :return: Selected chromosome based on tournament selection
+        :rtype: Chromosome
+        """
+        tournament = random.sample(chromosome_list, k=size)
+        return max(tournament, key=lambda c: c.fitness)
