@@ -54,7 +54,8 @@ class Genetic:
         :type survival_selection_method: str, optional
         """
 
-    def fitness_sum(self, chromosome_list):
+    @staticmethod
+    def fitness_sum(chromosome_list):
         """ Add up all the chromosomes fitness in current generation.
 
         :return: Sum of all chromosomes fitness in current generation
