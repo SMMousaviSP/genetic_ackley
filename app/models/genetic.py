@@ -25,6 +25,7 @@ class Genetic:
         self.population_size = population_size
         self.generation_count = generation_count
         self.current_generation = self.initialize_population()
+        self.next_generation = list()
 
     def initialize_population(self):
         """ Initialize random population.
@@ -70,6 +71,15 @@ class Genetic:
             self.population_size,
             parent_selection_method
         )
+
+    def go_to_the_future(self):
+        """ Change current generation to the next generation.
+
+        :return: NoneType
+        :rtype: NoneType
+        """
+        self.current_generation = self.next_generation
+        self.next_generation = list()
 
     @staticmethod
     def survival_selection(chromosome_list, survival_selection_method):
