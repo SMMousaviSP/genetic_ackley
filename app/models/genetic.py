@@ -26,6 +26,8 @@ class Genetic:
         self.generation_count = generation_count
         self.current_generation = self.initialize_population()
         self.next_generation = list()
+        self.generation_max_fitness = list()
+        self.generation_average_fitness = list()
 
     def initialize_population(self):
         """ Initialize random population.
