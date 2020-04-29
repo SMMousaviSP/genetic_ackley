@@ -20,5 +20,5 @@ def test_selection():
     chromosome_list = [Chromosome.random(10) for _ in range(10)]
     selected_chromosome_list = Genetic.selection(chromosome_list, 10, "rws")
     assert len(selected_chromosome_list) == 10
-    for chromosome in chromosome_list:
+    for chromosome in selected_chromosome_list:
         assert isinstance(chromosome, Chromosome)
