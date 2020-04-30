@@ -192,8 +192,8 @@ class Genetic:
         :rtype: Chromosome
         """
         chromosome_list.sort(key=lambda c: c.fitness)
-        fitness_sum = ((1 + len(chromosome_list)) * len(chromosome_list)) / 2
-        random_float = random.uniform(0, fitness_sum)
+        rank_sum = ((1 + len(chromosome_list)) * len(chromosome_list)) / 2
+        random_float = random.uniform(0, rank_sum)
         for i, chromosome in enumerate(chromosome_list):
             random_float -= i + 1
             if random_float <= 0:
