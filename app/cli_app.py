@@ -54,13 +54,15 @@ def selection_input(selection_type):
     print("1. Roulette Wheal Selection (RWS)")
     print("2. Stochastic Universal Sampling (SUS)")
     print("3. Tournament Selection (TS)")
-    selection_number = int(input())
-    if selection_number == 1:
-        return "rws"
-    if selection_number == 2:
-        return "sus"
-    if selection_number == 3:
-        return "ts_" + input("Enter size of tournament:")
+    while True:
+        selection_number = int(input())
+        if selection_number == 1:
+            return "rws"
+        if selection_number == 2:
+            return "sus"
+        if selection_number == 3:
+            return "ts_" + input("Enter size of tournament:")
+        print("Wrong input, try again.")
 
 
 if __name__ == "__main__":
