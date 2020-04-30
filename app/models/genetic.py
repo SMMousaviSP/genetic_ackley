@@ -28,6 +28,12 @@ class Genetic:
         self.next_generation = list()
         self.generation_max_fitness = list()
         self.generation_average_fitness = list()
+        self.best_chromosome = Genetic.find_best_chromosome(
+            self.current_generation
+        )
+        self.best_chromosome_last_generation = Genetic.find_best_chromosome(
+            self.current_generation
+        )
 
     def initialize_population(self):
         """ Initialize random population.
@@ -91,6 +97,14 @@ class Genetic:
                     )
                 )
             self.go_to_the_future()
+            self.best_chromosome = max(
+                self.best_chromosome,
+                Genetic.find_best_chromosome(self.current_generation),
+                key=lambda c: c.fitness
+            )
+        self.best_chromosome_last_generation = Genetic.find_best_chromosome(
+            self.current_generation
+        )
 
     def parent_selection(self, parent_selection_method):
         """ Parent selection based on selection method.
@@ -256,3 +270,7 @@ class Genetic:
                         return selected_chromosome_list
                     random_float = distance + random_float
         return selected_chromosome_list
+
+    @staticmethod
+    def find_best_chromosome(chromosome_list):
+        return max(chromosome_list, key=lambda c: c.fitness)
