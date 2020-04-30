@@ -273,4 +273,11 @@ class Genetic:
 
     @staticmethod
     def find_best_chromosome(chromosome_list):
+        """ Find best chromosome from a chromosome list.
+
+        :param chromosome_list: List of chromosome
+        :type chromosome_list: list
+        :return: Best chromosome from chromosome_list
+        :rtype: Chromosome
+        """
         return max(chromosome_list, key=lambda c: c.fitness)
