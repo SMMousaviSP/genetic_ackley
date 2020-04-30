@@ -166,7 +166,8 @@ class Genetic:
                 )
                 for _ in range(size)
             ]
-        # TODO: Add sus
+        if selection_method == "sus":
+            return Genetic.stochastic_universal_sampling(chromosome_list, size)
         return False
 
     @staticmethod
@@ -229,3 +230,29 @@ class Genetic:
         """
         tournament = random.sample(chromosome_list, k=size)
         return max(tournament, key=lambda c: c.fitness)
+
+    @staticmethod
+    def stochastic_universal_sampling(chromosome_list, size):
+        """ Select a list of chromosome based on stochastic universal sampling
+        (sus)
+
+        :param chromosome_list: List of chromosome
+        :type chromosome_list: list
+        :param size: Size of chromosome list to be selected
+        :type size: int
+        :return: Selected chromosome based on stochastic universal sampling
+        :rtype: Chromosome
+        """
+        fitness_sum = Genetic.fitness_sum(chromosome_list)
+        random_float = random.uniform(0, fitness_sum)
+        distance = fitness_sum / size
+        selected_chromosome_list = list()
+        while True:
+            for chromosome in chromosome_list:
+                random_float -= chromosome.fitness
+                if random_float <= 0:
+                    selected_chromosome_list.append(chromosome)
+                    if len(selected_chromosome_list) == size:
+                        return selected_chromosome_list
+                    random_float = distance + random_float
+        return selected_chromosome_list
