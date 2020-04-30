@@ -57,9 +57,9 @@ def selection_input(selection_type):
     selection_number = int(input())
     if selection_number == 1:
         return "rws"
-    elif selection_number == 2:
+    if selection_number == 2:
         return "sus"
-    elif selection_number == 3:
+    if selection_number == 3:
         return "ts_" + input("Enter size of tournament:")
 
 
