@@ -42,6 +42,21 @@ def main():
         survival_selection_method
     )
 
+    print("Best answer ever:")
+    print(f"Chromosome: {genetic.best_chromosome}")
+    print(f"Fitness: {genetic.best_chromosome.fitness}")
+    print(f"Ackley function output: {genetic.best_chromosome.calculate_ackley_function()}")
+    print(f"x: {genetic.best_chromosome.get_x()}")
+    print(f"y: {genetic.best_chromosome.get_y()}")
+
+    print("")
+    print("Best answer in last iteration:")
+    print(f"Chromosome: {genetic.best_chromosome_last_generation}")
+    print(f"Fitness: {genetic.best_chromosome_last_generation.fitness}")
+    print(f"Ackley function output: {genetic.best_chromosome_last_generation.calculate_ackley_function()}")
+    print(f"x: {genetic.best_chromosome_last_generation.get_x()}")
+    print(f"y: {genetic.best_chromosome_last_generation.get_y()}")
+
 
 def selection_input(selection_type):
     """ Get selection method from input
