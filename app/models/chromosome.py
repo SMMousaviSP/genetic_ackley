@@ -210,6 +210,20 @@ class Chromosome():
             )
         return False
 
+    def mutation(self, selection_probability, gene_probability):
+        """ Perform mutation on chromosome
+
+        :param selection_probability: Probability of selecting a chromosome
+        :type selection_probability: float
+        :param gene_probability: Probability of changing each gene
+        :type gene_probability: float
+        """
+        if random.random() > selection_probability:
+            return
+        for i in range(self.size):
+            if random.random() <= gene_probability:
+                self.genotype[i] = not self.genotype[i]
+
     def get_x(self):
         """ Get value of x in phenotype space.
 

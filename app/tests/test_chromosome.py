@@ -119,6 +119,13 @@ def test_crossover():
         assert i == 1
 
 
+def test_mutation():
+    c = get_from_gen_list_chromosome([0 for _ in range(10)])
+    c.mutation(1.0, 1.0)
+    for i in c:
+        assert i == 1
+
+
 def test_calculate_ackley_function():
     c = get_random_chromosome(10)
     c.get_x = lambda: 0
