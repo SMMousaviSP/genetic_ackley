@@ -31,7 +31,7 @@ def main():
         crossover_method = input("Enter n:") + "_point"
     elif crossover_method_number == 2:
         crossover_method = "single_point"
-    elif crossover_method == 3:
+    elif crossover_method_number == 3:
         crossover_method = "uniform"
 
     parent_selection_method = selection_input("parent selection")
