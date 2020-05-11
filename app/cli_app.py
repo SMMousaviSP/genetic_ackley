@@ -36,10 +36,16 @@ def main():
 
     survival_selection_method = selection_input("survival selection")
 
+    mutation_selection_probability = float(input("Enter probability of selecting a chromosome for mutation:"))
+
+    mutation_gene_probability = float(input("Enter probability of changing a gene for mutation:"))
+
     genetic.run(
         crossover_method,
         parent_selection_method,
-        survival_selection_method
+        survival_selection_method,
+        mutation_selection_probability,
+        mutation_gene_probability
     )
 
     print("Best answer ever:")
