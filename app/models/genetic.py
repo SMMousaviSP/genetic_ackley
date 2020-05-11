@@ -49,7 +49,9 @@ class Genetic:
     def run(
             self, crossover_method="3_point",
             parent_selection_method="rws",
-            survival_selection_method="rws"
+            survival_selection_method="rws",
+            mutation_selection_probability=1.0,
+            mutation_gene_probability=0.1
     ):
         """ Run genetic algorithm for ackley function in given methods.
 
@@ -67,6 +69,12 @@ class Genetic:
         , "ts_n" (Tournament Selection with size n) or "rb" (Rank-based
         Selection), defaults to "rws"
         :type survival_selection_method: str, optional
+        :param mutation_selection_probability: Probability of selecting a
+        chromosome to perform mutation, defaults to 1.0
+        :type mutation_selection_probability: float, optional
+        :param mutation_gene_probability: Probability of changing a gene in
+        mutation, defaults to 0.1
+        :type mutation_gene_probability: float, optional
         """
         for _ in range(self.generation_count):
             self.generation_max_fitness.append(
