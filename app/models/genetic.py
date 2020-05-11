@@ -87,8 +87,8 @@ class Genetic:
             selected_parent_list = self.parent_selection(
                 parent_selection_method
             )
-            offspring_list = []
             for i in range(0, len(selected_parent_list), 2):
+                offspring_list = []
                 offspring_list.extend(
                     selected_parent_list[i].crossover(
                         selected_parent_list[i+1],
