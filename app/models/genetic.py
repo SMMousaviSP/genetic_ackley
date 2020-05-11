@@ -95,6 +95,14 @@ class Genetic:
                         crossover_method
                     )
                 )
+                offspring_list[0].mutation(
+                    mutation_selection_probability,
+                    mutation_gene_probability
+                )
+                offspring_list[1].mutation(
+                    mutation_selection_probability,
+                    mutation_gene_probability
+                )
                 self.next_generation.extend(
                     self.survival_selection(
                         offspring_list + [
