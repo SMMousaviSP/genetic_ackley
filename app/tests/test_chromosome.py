@@ -125,6 +125,10 @@ def test_mutation():
     for i in c:
         assert i == 1
 
+    c.mutation(0, 0)
+    for i in c:
+        assert i == 1
+
 
 def test_calculate_ackley_function():
     c = get_random_chromosome(10)
