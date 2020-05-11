@@ -223,6 +223,7 @@ class Chromosome():
         for i in range(self.size):
             if random.random() <= gene_probability:
                 self.genotype[i] = not self.genotype[i]
+        self.fitness = self.calculate_fitness()
 
     def get_x(self):
         """ Get value of x in phenotype space.
