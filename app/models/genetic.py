@@ -277,7 +277,7 @@ class Genetic:
                     if len(selected_chromosome_list) == size:
                         return selected_chromosome_list
                     random_float = distance + random_float
-        return selected_chromosome_list
+        return random.shuffle(selected_chromosome_list)
 
     @staticmethod
     def find_best_chromosome(chromosome_list):
