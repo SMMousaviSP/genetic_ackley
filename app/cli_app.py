@@ -3,6 +3,8 @@ Command-line interface for genetic algorithm implementation for ackley
 function.
 """
 
+import matplotlib.pyplot as plt
+
 from models.genetic import Genetic
 
 
@@ -62,6 +64,18 @@ def main():
     print(f"Ackley function output: {genetic.best_chromosome_last_generation.calculate_ackley_function()}")
     print(f"x: {genetic.best_chromosome_last_generation.get_x()}")
     print(f"y: {genetic.best_chromosome_last_generation.get_y()}")
+
+    plt.plot(range(1, generation_count+1), genetic.generation_max_fitness)
+    plt.title(label="Maximux fitness in diffrent iterations")
+    plt.xlabel("Iteration")
+    plt.ylabel("Maximum fitness")
+    plt.show()
+
+    plt.plot(range(1, generation_count+1), genetic.generation_average_fitness)
+    plt.title(label="Average fitness in diffrent iterations")
+    plt.xlabel("Iteration")
+    plt.ylabel("Average fitness")
+    plt.show()
 
 
 def selection_input(selection_type):
