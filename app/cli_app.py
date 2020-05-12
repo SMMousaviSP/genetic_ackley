@@ -89,6 +89,8 @@ def selection_input(selection_type):
     print("1. Roulette Wheal Selection (RWS)")
     print("2. Stochastic Universal Sampling (SUS)")
     print("3. Tournament Selection (TS)")
+    if selection_type == "survival selection":
+        print("4. Elitism")
     while True:
         selection_number = int(input())
         if selection_number == 1:
@@ -97,6 +99,9 @@ def selection_input(selection_type):
             return "sus"
         if selection_number == 3:
             return "ts_" + input("Enter size of tournament:")
+        if selection_type == "survival selection":
+            if selection_number == 4:
+                return "elitism"
         print("Wrong input, try again.")
 
 

@@ -66,8 +66,8 @@ class Genetic:
         :type parent_selection_method: str, optional
         :param survival_selection_method: Survival selection method, could be
         "rws" (Roulette Wheal Selection), "sus" (Stochastic Universal Sampling)
-        , "ts_n" (Tournament Selection with size n) or "rb" (Rank-based
-        Selection), defaults to "rws"
+        , "ts_n" (Tournament Selection with size n), "rb" (Rank-based
+        Selection) or "elitism", defaults to "rws"
         :type survival_selection_method: str, optional
         :param mutation_selection_probability: Probability of selecting a
         chromosome to perform mutation, defaults to 1.0
@@ -173,7 +173,7 @@ class Genetic:
         :type chromosome_list: list
         :param size: Size of chromosomes that should be selected
         :type size: int
-        :param selection_method: Selection method (rws, sus, ts, rb)
+        :param selection_method: Selection method (rws, sus, ts, rb, elitism)
         :type selection_method: str
         :return: List of selected chromosomes
         :rtype: list
@@ -198,6 +198,11 @@ class Genetic:
             ]
         if selection_method == "sus":
             return Genetic.stochastic_universal_sampling(chromosome_list, size)
+        if selection_method == "elitism":
+            chromosome_list.sort(reverse=True, key=lambda c: c.fitness)
+            return [
+                chromosome_list[i] for i in range(size)
+            ]
         return False
 
     @staticmethod
