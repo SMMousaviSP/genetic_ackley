@@ -11,7 +11,15 @@ from models.genetic import Genetic
 def main():
     """ Main function
     """
-    chromosome_size = int(input("Enter size of binary chromosome:"))
+    while True:
+        chromosome_size = int(input("Enter size of binary chromosome:"))
+        if chromosome_size % 2 != 0:
+            print("Chromosome size should be even, try again.")
+            continue
+        if chromosome_size < 2:
+            print("Chromosome size should be greater than 1, try again.")
+            continue
+        break
 
     population_size = int(
         input("Enter size of population in each generation:")
@@ -21,26 +29,46 @@ def main():
 
     genetic = Genetic(chromosome_size, population_size, generation_count)
 
-    print("Enter crossover method:")
-    print("1. n_point")
-    print("2. single_point")
-    print("3. uniform")
-    crossover_method = ""
-    crossover_method_number = int(input())
-    if crossover_method_number == 1:
-        crossover_method = input("Enter n:") + "_point"
-    elif crossover_method_number == 2:
-        crossover_method = "single_point"
-    elif crossover_method_number == 3:
-        crossover_method = "uniform"
+    while True:
+        print("Enter crossover method:")
+        print("1. n_point")
+        print("2. single_point")
+        print("3. uniform")
+        crossover_method = ""
+        crossover_method_number = int(input())
+        if crossover_method_number == 1:
+            while True:
+                number_of_points = int(input("Enter n:"))
+                if number_of_points < chromosome_size:
+                    crossover_method = str(number_of_points) + "_point"
+                    break
+                print("Number of points should be less than chromosome size, try again.")
+            break
+        elif crossover_method_number == 2:
+            crossover_method = "single_point"
+            break
+        elif crossover_method_number == 3:
+            crossover_method = "uniform"
+            break
+        print("Wrong input, try again.")
 
     parent_selection_method = selection_input("parent selection")
 
     survival_selection_method = selection_input("survival selection")
 
-    mutation_selection_probability = float(input("Enter probability of selecting a chromosome for mutation:"))
+    while True:
+        mutation_selection_probability = float(input("Enter probability of selecting a chromosome for mutation:"))
+        if mutation_selection_probability > 1 or mutation_selection_probability < 0:
+            print("Probability of selecting a chromosome for mutation should be between 0 and 1, try again.")
+            continue
+        break
 
-    mutation_gene_probability = float(input("Enter probability of changing a gene for mutation:"))
+    while True:
+        mutation_gene_probability = float(input("Enter probability of changing a gene for mutation:"))
+        if mutation_gene_probability > 1 or mutation_gene_probability < 0:
+            print("probability of changing a gene for mutation should be between 0 and 1, try again.")
+            continue
+        break
 
     genetic.run(
         crossover_method,
