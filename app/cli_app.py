@@ -94,13 +94,13 @@ def main():
     print(f"y: {genetic.best_chromosome_last_generation.get_y()}")
 
     plt.plot(range(1, generation_count+1), genetic.generation_max_fitness)
-    plt.title(label="Maximux fitness in diffrent iterations")
+    plt.title(label="Maximum fitness in different iterations")
     plt.xlabel("Iteration")
     plt.ylabel("Maximum fitness")
     plt.show()
 
     plt.plot(range(1, generation_count+1), genetic.generation_average_fitness)
-    plt.title(label="Average fitness in diffrent iterations")
+    plt.title(label="Average fitness in different iterations")
     plt.xlabel("Iteration")
     plt.ylabel("Average fitness")
     plt.show()
@@ -114,7 +114,7 @@ def selection_input(selection_type):
     :type selection_type: str
     """
     print(f"Enter {selection_type} method:")
-    print("1. Roulette Wheal Selection (RWS)")
+    print("1. Roulette Wheel Selection (RWS)")
     print("2. Stochastic Universal Sampling (SUS)")
     print("3. Tournament Selection (TS)")
     if selection_type == "survival selection":
