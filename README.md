@@ -19,6 +19,8 @@ You can choose the binary chromosome size, the population in each generation, cr
 - Tournament Selection (TS)
 - Elitism
 
+![Average Fitness in Each Iteration](https://raw.githubusercontent.com/SMMousaviSP/genetic_ackley/master/genetic_ackley_average_fitness.png)
+
 After choosing all of the parameters, the program will show you the best-found answer (the binary chromosome, fitness, x, y, and the output of Ackley function), the best answer in the last iteration, maximum fitness in different iterations plot, and average fitness in different iterations plot.
 
 ## How to Run
